@@ -23,7 +23,7 @@
 	<header class="site-header">
 		<div class="wrapper site-header__wrapper">
 			<div class="site-header__start">
-				<a href="#" class="brand" th:text="@{#}"></a>
+				<a href="#" class="brand" th:text="${accountName}"></a>
 			</div>
 			<div class="site-header__end">
 				<nav class="nav">
@@ -31,8 +31,8 @@
 						menu
 					</button>
 					<ul class="nav__wrapper">
-						<li class="nav__item"><a th:href="@{#}">Home</a></li>
-						<li class="nav__item"><a th:href="@{#}">Blog Register</a></li>
+						<li class="nav__item"><a th:href="@{/blog/list}">Home</a></li>
+						<li class="nav__item"><a th:href="@{/blog/register}">Blog Register</a></li>
 						<li class="nav__item"><a th:href="@{#}">Logout</a></li>
                     </ul>
 				</nav>

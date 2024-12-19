@@ -39,7 +39,7 @@ public class AccountLoginController {
 			return "login.html";
 		}else {
 			session.setAttribute("loginAccountInfo", account);
-			return "register.html";
+			return "redirect:/blog/list";
 		}
 	}
 

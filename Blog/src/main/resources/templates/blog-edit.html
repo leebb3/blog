@@ -42,10 +42,10 @@
         <section class="lesson-register-section">
             <h2>記事編集</h2>
             <div class="register-form">
-                <form th:action="@{#}" method="post" enctype="multipart/form-data">
+                <form th:action="@{blog/edit/process}" method="post" enctype="multipart/form-data">
                     <div class="register-input">
                         <div>タイトル</div>
-                        <input type="text" name="blogTitle" th:value="@{#}">
+                        <input type="text" name="blogTitle" th:value="@{blogTitle}">
                     </div>
 <!--                    <div class="register-input">
                         <div>日付</div>
@@ -53,7 +53,7 @@
                     </div>-->
                     <div class="register-input">
                         <div>カテゴリ</div>
-                        <input type="text" name="category" th:value="@{#}">
+                        <input type="text" name="categoryName" th:value="@{categoryName}">
                     </div>
 					<div class="register-input">
 					    <div>画像</div>
@@ -63,7 +63,7 @@
                         <div>詳細</div>
                         <textarea name="blogDetail" id="" cols="30" rows="10" th:text="@{#}"></textarea>
                     </div>
-                    <input type="hidden" name="blogId" th:value="@{#}">
+                    <input type="hidden" name="blogId" th:value="@{blogId}">
                     <div class="register-button">
                         <button class="change">変更</button>
                         <button class="back" type="button" onclick="history.back();">戻る</button>

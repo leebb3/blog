@@ -22,7 +22,7 @@
 	<header class="site-header">
 		<div class="wrapper site-header__wrapper">
 			<div class="site-header__start">
-				<a href="#" class="brand" th:text="@{#}"></a>
+				<a href="#" class="brand" th:text="${accountName}"></a>
 			</div>
 			<div class="site-header__end">
 				<nav class="nav">
@@ -30,10 +30,10 @@
 						menu
 					</button>
 					<ul class="nav__wrapper">
-						<li class="nav__item"><a th:href="@{#}">Home</a></li>
-						<li class="nav__item"><a th:href="@{#}">Blog Register</a></li>
+						<li class="nav__item"><a th:href="@{/blog/list}">Home</a></li>
+						<li class="nav__item"><a th:href="@{/blog/register}">Blog Register</a></li>
 						<li class="nav__item"><a th:href="@{#}">Logout</a></li>
-                    </ul>
+					</ul>
 				</nav>
 			</div>
 		</div>
@@ -43,21 +43,21 @@
 	<main>
 		<section class="first-view-section js-cherry">
 			<img th:src="@{/img/cherry.jpg}" alt="">
-			<h2 class="cherry-card" th:text="@{#}"></h2>
+			<h2 class="cherry-card" th:text="${accountName}"></h2>
 			<img th:src="@{/img/cherry.jpg}" alt="">
 		</section>
 		<section class="blog-list-section">
 			<h2>Blog List</h2>
 			<div class="blog-list-flex">
 				<article class="blog-topic-article" th:each="blog:${blogList}">
-					<a th:href="@{#}" class="blog-colum">
+					<a th:href="@{/blog/edit/{blogId}(blogId=${blog.blogId})}" class="blog-colum">
 						<div class="blog-colum-category">
-							<p th:text="@{#}"></p><!--category-->
+							<p th:text="${blog.categoryName}"></p><!--category-->
 						</div>
-						<img th:src="@{#}"><!--blogImage-->
+						<img th:src="@{/blog-img/{imagePath}(imagePath=${blog.blogImage})}"><!--blogImage-->
 						<div class="colum__box">
-							<!--<p th:text="@{#}"></p>registerDate-->
-							<p th:text="@{#}"></p><!--blogTitle-->
+							<!--<p th:text="${{/blog-img/{imagePath}, 'yyyy-MM-dd')}"></p>registerDate-->
+							<p th:text="${blog.blogTitle}"></p><!--blogTitle-->
 						</div>
 					</a>
 				</article>
