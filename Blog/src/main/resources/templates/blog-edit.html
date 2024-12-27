@@ -30,9 +30,9 @@
 						menu
 					</button>
 					<ul class="nav__wrapper">
-						<li class="nav__item"><a th:href="@{#}">Home</a></li>
-						<li class="nav__item"><a th:href="@{#}">Blog Register</a></li>
-						<li class="nav__item"><a th:href="@{#}">Logout</a></li>
+						<li class="nav__item"><a th:href="@{/blog/list}">Home</a></li>
+						<li class="nav__item"><a th:href="@{/blog/register}">Blog Register</a></li>
+						<li class="nav__item"><a th:href="@{/account/logout}">Logout</a></li>
                     </ul>
 				</nav>
 			</div>
@@ -42,10 +42,10 @@
         <section class="lesson-register-section">
             <h2>記事編集</h2>
             <div class="register-form">
-                <form th:action="@{blog/edit/process}" method="post" enctype="multipart/form-data">
+                <form th:action="@{/blog/edit/process}" method="post" enctype="multipart/form-data">
                     <div class="register-input">
                         <div>タイトル</div>
-                        <input type="text" name="blogTitle" th:value="@{blogTitle}">
+                        <input type="text" name="blogTitle" th:value="${blog.blogTitle}">
                     </div>
 <!--                    <div class="register-input">
                         <div>日付</div>
@@ -53,25 +53,25 @@
                     </div>-->
                     <div class="register-input">
                         <div>カテゴリ</div>
-                        <input type="text" name="categoryName" th:value="@{categoryName}">
+                        <input type="text" name="categoryName" th:value="${blog.categoryName}">
                     </div>
 					<div class="register-input">
 					    <div>画像</div>
 						<input type="file" name="blogImage">
 					</div>
-                    <div class="register-input">
+                    <div class= "register-input">
                         <div>詳細</div>
-                        <textarea name="blogDetail" id="" cols="30" rows="10" th:text="@{#}"></textarea>
+                        <textarea name="blogDetail" id="" cols="30" rows="10" th:text="${blog.article}"></textarea>
                     </div>
-                    <input type="hidden" name="blogId" th:value="@{blogId}">
+                    <input type="hidden" name="blogId" th:value="${blog.blogId}">
                     <div class="register-button">
                         <button class="change">変更</button>
                         <button class="back" type="button" onclick="history.back();">戻る</button>
                     </div>
                 </form>
-				<form th:action="@{@}" method="post">
+				<form th:action="@{/blog/delete}" method="post">
 					<div class="register-button">
-						<input type="hidden" name="blogId" th:value="@{#}">
+						<input type="hidden" name="blogId" th:value="${blog.blogId}">
 						<button class="change">削除</button>
 					</div>
 				</form>

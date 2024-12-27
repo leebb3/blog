@@ -1,65 +1,106 @@
-$(function () {
-    let navToggle = $(".nav__toggle");
-let navWrapper = $(".nav__wrapper");
+$(function() {
+	let navToggle = $(".nav__toggle");
+	let navWrapper = $(".nav__wrapper");
 
-navToggle.on("click", function () {
-  if (navWrapper.hasClass("active")) {
-    $(this).attr("aria-expanded", "false");
-    $(this).attr("aria-label", "menu");
-    navWrapper.removeClass("active");
-  } else {
-    navWrapper.addClass("active");
-    $(this).attr("aria-label", "close menu");
-    $(this).attr("aria-expanded", "true");
-    searchForm.removeClass("active");
-  }
-});
+	navToggle.on("click", function() {
+		if (navWrapper.hasClass("active")) {
+			$(this).attr("aria-expanded", "false");
+			$(this).attr("aria-label", "menu");
+			navWrapper.removeClass("active");
+		} else {
+			navWrapper.addClass("active");
+			$(this).attr("aria-label", "close menu");
+			$(this).attr("aria-expanded", "true");
+			searchForm.removeClass("active");
+		}
+	});
 
-let searchToggle = $(".search__toggle");
-let searchForm = $(".search__form");
+	let searchToggle = $(".search__toggle");
+	let searchForm = $(".search__form");
 
-searchToggle.on("click", function() {
-  searchForm.toggleClass("active");
-  navToggle.attr("aria-expanded", "false");
-  navToggle.attr("aria-label", "menu");
-  navWrapper.removeClass("active");
-});
+	searchToggle.on("click", function() {
+		searchForm.toggleClass("active");
+		navToggle.attr("aria-expanded", "false");
+		navToggle.attr("aria-label", "menu");
+		navWrapper.removeClass("active");
+	});
 
-/*--------------さくらが舞い散る------------------*/
+	/*--------------さくらが舞い散る------------------*/
 
-// 'js-cherry'クラスがついた要素を全て取得
-const cherryEls = $(".js-cherry");
+	// 'js-cherry'クラスがついた要素を全て取得
+	const cherryEls = $(".js-cherry");
 
-// 取得した要素をArrayに変換
-const cherryElsArr = $.makeArray(cherryEls);
+	// 取得した要素をArrayに変換
+	const cherryElsArr = $.makeArray(cherryEls);
 
-// 取得した要素ひとつひとつに処理を行う
-$.each(cherryElsArr, function(index, cherryEl) {
-let interval;
+	// 取得した要素ひとつひとつに処理を行う
+	$.each(cherryElsArr, function(index, cherryEl) {
+		let interval;
 
-// マウスホバー時に桜を降らせる
-cherryEl.addEventListener("mouseenter", function() {
-interval = setInterval($.proxy(createPetal, null, cherryEl), 500);
-});
+		// マウスホバー時に桜を降らせる
+		cherryEl.addEventListener("mouseenter", function() {
+			interval = setInterval($.proxy(createPetal, null, cherryEl), 500);
+		});
 
-// マウスを離すと停止
-cherryEl.addEventListener("mouseleave", function() {
-clearInterval(interval);
-});
-});
+		// マウスを離すと停止
+		cherryEl.addEventListener("mouseleave", function() {
+			clearInterval(interval);
+		});
+	});
 
-// 花びらを生成する関数
-const createPetal = function(el) {
-const petalEl = $("<span></span>").addClass("petal");
-const minSize = 10;
-const maxSize = 15;
-const size = Math.random() * (maxSize + 1 - minSize) + minSize;
-petalEl.css({ width: size + "px", height: size + "px", left: Math.random() * el.clientWidth + "px" });
-$(el).append(petalEl);
+	// 花びらを生成する関数
+	const createPetal = function(el) {
+		const petalEl = $("<span></span>").addClass("petal");
+		const minSize = 10;
+		const maxSize = 15;
+		const size = Math.random() * (maxSize + 1 - minSize) + minSize;
+		petalEl.css({ width: size + "px", height: size + "px", left: Math.random() * el.clientWidth + "px" });
+		$(el).append(petalEl);
 
-// 一定時間が経てば花びらを消す
-setTimeout(function() {
-petalEl.remove();
-}, 6000);
-};
+		// 一定時間が経てば花びらを消す
+		setTimeout(function() {
+			petalEl.remove();
+		}, 6000);
+	};
 })
+
+
+$(function () {
+	const searchButton = $("#search-button");
+	const searchDialog = $("#search-dialog");
+	const searchInput = $("#search-input");
+	const closeButton = $("#search-close");
+	const blogList = $(".blog-topic-article");
+
+	// show
+	searchButton.on("click", function (event) {
+		event.preventDefault();
+		searchDialog.addClass("active");
+		searchInput.focus();
+	});
+
+	// close
+	closeButton.on("click", function () {
+		searchDialog.removeClass("active");
+	});
+
+	// search
+	searchInput.on("keypress", function (event) {
+		if (event.key === "Enter") {
+			const keyword = searchInput.val().toLowerCase();
+
+			// find
+			blogList.each(function () {
+				const title = $(this).find(".colum__box p").text().toLowerCase();
+				if (title.includes(keyword)) {
+					$(this).show();
+				} else {
+					$(this).hide();
+				}
+			});
+
+			// close
+			searchDialog.removeClass("active");
+		}
+	});
+});

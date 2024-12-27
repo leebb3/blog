@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+.site-header {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    position: fixed; /* 让 header 固定在顶部 */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* 确保 header 位于最上层 */
+}
+
+.profile-container {
+    margin-top: 300px; 
+    text-align: center;
+    padding: 20px;
+    background-color: wheat;
+    border-radius: 8px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-photo img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.profile-info h1 {
+    font-size: 2em;
+    margin: 10px 0;
+    color: brown;
+}
+
+.profile-info p {
+    color: black;
+    line-height: 1.6;
+}
+
+.profile-info strong {
+    color: black;
+}

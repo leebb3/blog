@@ -8,26 +8,26 @@ import jakarta.persistence.Id;
 @Entity
 public class Account {
 	//admin_idの設定
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long accountId;
-	
+
 	private String accountEmail;
-	
+
 	private String accountName;
-	
+
 	private String password;
-	
+
 	//空コンストラクタ
-	public Account () {
-		
+	public Account() {
+
 	}
-	
+
 	//コンストラクタ
-	
-	public Account(String accountEmail,String accountName,  String password) {
-//		super();
+
+	public Account(String accountEmail, String accountName, String password) {
+		//		super();
 		this.accountEmail = accountEmail;
 		this.accountName = accountName;
 		this.password = password;
@@ -64,7 +64,5 @@ public class Account {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
-	
+
 }

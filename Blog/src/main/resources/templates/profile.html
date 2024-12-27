@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
+	<link rel="stylesheet" th:href="@{/css/reset.css}">
+	<link rel="stylesheet" th:href="@{/css/header.css}">
+	<link rel="stylesheet" th:href="@{/css/blog.css}">
+	
+</head>
+<body>
+	<!-- Header Start -->
+	<header class="site-header">
+		<div class="wrapper site-header__wrapper">
+			<div class="site-header__start">
+				<a href="#" class="brand" th:text="${accountName}"></a>
+			</div>
+			<div class="site-header__end">
+				<nav class="nav">
+					<button class="nav__toggle" aria-expanded="false" type="button">
+						menu
+					</button>
+					<ul class="nav__wrapper">
+						<li class="nav__item"><a th:href="@{/blog/list}">Home</a></li>
+						<li class="nav__item"><a th:href="@{/blog/profile}">Profile</a></li>
+						<li class="nav__item"><a th:href="@{/blog/register}">Blog Register</a></li>
+						<li class="nav__item"><a th:href="@{/account/logout}">Logout</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<!-- Header End -->
+	
+    <div class="profile-container" th:action=@{blog/profile}>
+        <div class="profile-photo">
+            <img th:src="@{/img/profile.png}" 　alt="Profile Photo">
+        </div>
+        <div class="profile-info">
+            <h1>Li Xin</h1>
+            <p><strong>About Me:</strong> 自己紹介 "I'm a passionate software developer who loves creating impactful solutions."</p>
+            <p><strong>Interests:</strong> Coding, Reading, Basketball, Traveling</p>
+        </div>
+    </div>
+	
+	<section class="lesson-fix-section">
+	        <div class="menu-link">
+	            <a th:href="@{/blog/list}">&nbsp;&nbsp;&nbsp;&laquo;&nbsp;ブログリストを戻る</a>
+	        </div>
+	    </div>
+</body>
+</html>

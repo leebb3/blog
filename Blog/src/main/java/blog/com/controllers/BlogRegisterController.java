@@ -6,6 +6,8 @@ import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import blog.com.models.entity.Account;
 import blog.com.services.BlogService;
-import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class BlogRegisterController {
@@ -51,7 +52,7 @@ public class BlogRegisterController {
 			@RequestParam String blogDetail) {
 		//セッションからログインしている人の情報をadminという変数に格納
 		Account account = (Account) session.getAttribute("loginAccountInfo");
-		//もし、admin==nullだったら、ログイン画面にリダイレクトする
+		//もし、account==nullだったら、ログイン画面にリダイレクトする
 		//そうでない場合は、画像のファイル名を取得
 		//画像のアップロード
 		//もし、同じファイルの名前がなかったら保存

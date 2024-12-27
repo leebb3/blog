@@ -33,7 +33,7 @@
 					<ul class="nav__wrapper">
 						<li class="nav__item"><a th:href="@{/blog/list}">Home</a></li>
 						<li class="nav__item"><a th:href="@{/blog/register}">Blog Register</a></li>
-						<li class="nav__item"><a th:href="@{#}">Logout</a></li>
+						<li class="nav__item"><a th:href="@{/account/logout}">Logout</a></li>
                     </ul>
 				</nav>
 			</div>
@@ -44,7 +44,7 @@
             <div class="lesson-fix-box">
                 <h2>記事の編集が完了しました</h2>
                 <div class="menu-link">
-                    <a th:href="@{#}">&nbsp;&nbsp;&nbsp;&laquo;&nbsp;メニューへ戻る</a>
+                    <a th:href="@{/blog/list}">&nbsp;&nbsp;&nbsp;&laquo;&nbsp;メニューへ戻る</a>
                 </div>
             </div>
         </section>

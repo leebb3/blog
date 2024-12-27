@@ -9,33 +9,38 @@ import jakarta.persistence.Id;
 public class Blog {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	
+
 	private Long blogId;
-	
+
 	private String blogTitle;
-	
+
 	private String categoryName;
-	
+
 	private String blogImage;
-	
+
 	private String article;
-	
+
 	private Long accountId;
 	
+	private int viewCount;
+
 	//空のコンストラクタ
 	public Blog() {
 	}
-	
+
 	//コンストラクタ
-	
-	public Blog(String blogTitle, String categoryName, String blogImage, String article, Long accountId) {
+
+	public Blog(String blogTitle, String categoryName, String blogImage, String article, Long accountId, int viewCount) {
 		super();
 		this.blogTitle = blogTitle;
 		this.categoryName = categoryName;
 		this.blogImage = blogImage;
 		this.article = article;
 		this.accountId = accountId;
+		this.viewCount = viewCount;
 	}
+
+	//getter & setter
 
 	public Long getBlogId() {
 		return blogId;
@@ -84,4 +89,13 @@ public class Blog {
 	public void setAccountId(Long accountId) {
 		this.accountId = accountId;
 	}
+
+	public int getViewCount() {
+		return viewCount;
+	}
+
+	public void setViewCount(int viewCount) {
+		this.viewCount = viewCount;
+	}
+	
 }

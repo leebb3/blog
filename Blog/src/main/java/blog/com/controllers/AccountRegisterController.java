@@ -10,23 +10,24 @@ import blog.com.services.AccountService;
 
 @Controller
 public class AccountRegisterController {
-	
+
 	@Autowired
 	private AccountService accountService;
-	
+
 	//登録画面
 	@GetMapping("/account/register")
 	public String getAccountPage() {
 		return "register.html";
 	}
+
 	@PostMapping("/account/register/process")
 	public String accountRegisterProcess(
 			@RequestParam String accountEmail,
 			@RequestParam String accountName,
 			@RequestParam String password) {
-		if(accountService.createAdmin(accountEmail, accountName, password)) {
+		if (accountService.createAccount(accountEmail, accountName, password)) {
 			return "login.html";
-		}else {
+		} else {
 			return "register.html";
 		}
 	}
